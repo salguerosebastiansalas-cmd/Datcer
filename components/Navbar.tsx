@@ -6,30 +6,29 @@ interface NavbarProps {
   scrollToSection: (id: SectionId) => void;
 }
 
-// Custom Datcer Logo Component based on corporate identity
-// Orange: #F26722 (RGB 242, 103, 34)
-// Gray: #636466 (RGB 99, 100, 102)
-// Font: Swis721 Ex BT style (using Encode Sans Expanded)
-const DatcerLogo = ({ className = "" }: { className?: string }) => (
-  <div className={`flex items-center ${className}`}>
-    {/* Text: DAT - Orange, Italic */}
+/**
+ * Componente de Logo Corporativo Datcer SIMPLIFICADO
+ * - Únicamente Texto: DAT (naranja) CER (gris)
+ * - Estilo: Swis721 Ex BT (Extendido, Grueso e Inclinado)
+ * - Naranja: 242, 103, 34
+ * - Gris: 99, 100, 102
+ */
+export const DatcerLogo = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center select-none ${className}`}>
     <span 
-        className="text-3xl text-[#F26722] italic"
+        className="text-4xl font-datcer-logo"
         style={{ 
-          fontFamily: '"Encode Sans", sans-serif', 
-          fontVariationSettings: '"wdth" 125, "wght" 800',
-          letterSpacing: '-0.03em',
+          color: 'rgb(242, 103, 34)',
+          lineHeight: '1'
         }}
     >
         DAT
     </span>
-    {/* Text: CER - Gray, Italic */}
     <span 
-        className="text-3xl text-[#636466] italic"
+        className="text-4xl font-datcer-logo"
         style={{ 
-          fontFamily: '"Encode Sans", sans-serif', 
-          fontVariationSettings: '"wdth" 125, "wght" 800',
-          letterSpacing: '-0.03em',
+          color: 'rgb(99, 100, 102)',
+          lineHeight: '1'
         }}
     >
         CER
@@ -63,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
         {/* Logo */}
         <div 
           onClick={() => scrollToSection(SectionId.HERO)}
-          className="cursor-pointer group hover:opacity-80 transition-opacity"
+          className="cursor-pointer group hover:opacity-90 transition-opacity"
         >
           <DatcerLogo />
         </div>
@@ -97,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-[#fbfbfd] border-b border-gray-200 md:hidden flex flex-col p-6 gap-4 shadow-xl">
+        <div className="absolute top-full left-0 w-full bg-[#fbfbfd] border-b border-gray-200 md:hidden flex flex-col p-6 gap-4 shadow-xl animate-fade-in-up">
           {navLinks.map((link) => (
             <button
               key={link.id}

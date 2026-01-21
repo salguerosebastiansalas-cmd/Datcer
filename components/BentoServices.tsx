@@ -13,10 +13,10 @@ const BentoServices: React.FC = () => {
   const mainServices = [
     {
         id: 'arch',
-        title: "Arquitectura Integral.",
+        title: "Diseño integral de los proyectos.",
         subtitle: "Diseño & Planificación",
         description: "Diseñamos el núcleo de su operación. Integración perfecta de potencia, enfriamiento y espacio físico para máxima eficiencia y redundancia.",
-        deepDescription: "Nuestro enfoque arquitectónico va más allá de la estética. Realizamos análisis de dinámica de fluidos computacional (CFD) pre-construcción para garantizar cero puntos calientes. Diseñamos rutas de cableado aéreo y bajo piso falso optimizadas para el flujo de aire.",
+        deepDescription: "Nuestro enfoque de diseño va más allá de la estética. Realizamos análisis de dinámica de fluidos computacional (CFD) pre-construcción para garantizar cero puntos calientes. Diseñamos rutas de cableado aéreo y bajo piso falso optimizadas para el flujo de aire.",
         details: [
             "Análisis CFD (Computational Fluid Dynamics).",
             "Diseño de blindaje electromagnético.",
@@ -25,7 +25,7 @@ const BentoServices: React.FC = () => {
         ],
         icon: <Layers className="w-8 h-8 text-[#F26722]" />,
         iconSm: <Layers className="w-8 h-8 text-[#F26722]" />,
-        msg: "Hola Datcer, me interesa saber más sobre sus servicios de Arquitectura Integral para Data Centers."
+        msg: "Hola Datcer, me interesa saber más sobre sus servicios de Diseño integral de proyectos para Data Centers."
     },
     {
         id: 'power',
