@@ -1,29 +1,19 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { SectionId } from '../types';
 
 /**
  * Componente de Logo Corporativo Datcer OFICIAL
- * - Incluye el símbolo gráfico entrelazado (D naranja / C gris)
- * - Texto Datcer en estilo Apple/Swiss
+ * - Diseño puramente tipográfico (Solo letras)
+ * - Colores exactos: Naranja #F26522, Gris #636466
  */
 export const DatcerLogo = ({ className = "" }: { className?: string }) => (
-  <div className={`flex items-center gap-3 select-none ${className}`}>
-    {/* Símbolo Gráfico Datcer (Basado en la imagen proporcionada) */}
-    <svg className="w-10 h-10 md:w-12 md:h-12 drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="48" fill="white" stroke="#636466" strokeWidth="1.5"/>
-      {/* Forma D Naranja */}
-      <path d="M30 35 H55 C65 35 70 40 70 50 C70 60 65 65 55 65 H45 L40 75 H55 C75 75 85 65 85 50 C85 35 75 25 55 25 H30 L25 35 Z" fill="#F26722"/>
-      {/* Forma C Gris */}
-      <path d="M70 65 H45 C35 65 30 60 30 50 C30 40 35 35 45 35 H55 L60 25 H45 C25 25 15 35 15 50 C15 65 25 75 45 75 H70 L75 65 Z" fill="#636466"/>
-    </svg>
-    
+  <div className={`flex items-center select-none ${className}`}>
     <div className="flex items-center">
         <span 
             className="text-2xl md:text-3xl font-datcer-logo"
             style={{ 
-              color: 'rgb(242, 103, 34)',
+              color: '#F26522',
               lineHeight: '1'
             }}
         >
@@ -32,7 +22,7 @@ export const DatcerLogo = ({ className = "" }: { className?: string }) => (
         <span 
             className="text-2xl md:text-3xl font-datcer-logo"
             style={{ 
-              color: 'rgb(99, 100, 102)',
+              color: '#636466',
               lineHeight: '1'
             }}
         >
@@ -42,7 +32,6 @@ export const DatcerLogo = ({ className = "" }: { className?: string }) => (
   </div>
 );
 
-// Define missing NavbarProps interface to satisfy React.FC type argument
 interface NavbarProps {
   scrollToSection: (id: SectionId) => void;
 }
@@ -84,14 +73,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="text-xs font-bold text-[#636466] hover:text-[#F26722] transition-colors tracking-widest uppercase whitespace-nowrap"
+              className="text-xs font-bold text-[#636466] hover:text-[#F26522] transition-colors tracking-widest uppercase whitespace-nowrap"
             >
               {link.label}
             </button>
           ))}
           <button 
             onClick={() => scrollToSection(SectionId.CONTACT)}
-            className="bg-[#636466] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-[#F26722] transition-all active:scale-95 shadow-md ml-2"
+            className="bg-[#636466] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-[#F26522] transition-all active:scale-95 shadow-md ml-2"
           >
             Cotizar
           </button>
@@ -125,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
                 scrollToSection(SectionId.CONTACT);
                 setIsOpen(false);
             }}
-            className="bg-[#F26722] text-white py-4 rounded-2xl font-bold uppercase text-center"
+            className="bg-[#F26522] text-white py-4 rounded-2xl font-bold uppercase text-center"
           >
             Iniciar Proyecto
           </button>
