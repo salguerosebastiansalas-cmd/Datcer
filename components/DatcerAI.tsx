@@ -62,7 +62,7 @@ const DatcerAI: React.FC = () => {
   };
 
   return (
-    <section id={SectionId.AI} className="pt-24 pb-32 px-6 bg-[#1d1d1f] text-white relative overflow-hidden snap-start">
+    <section id={SectionId.AI} className="pt-24 pb-32 px-6 bg-[#1d1d1f] text-white relative overflow-hidden">
       
       {/* Siri/Apple Intelligence style glowing background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,#2a2a2f_100%)] animate-[spin_10s_linear_infinite] opacity-30 pointer-events-none" />

@@ -10,7 +10,7 @@ const CertificationSection: React.FC = () => {
   const closeModal = () => setSelectedItem(null);
 
   return (
-    <section id={SectionId.CERTIFICATION} className="pt-24 pb-32 px-6 bg-[#000000] text-white relative overflow-hidden snap-start">
+    <section id={SectionId.CERTIFICATION} className="pt-24 pb-32 px-6 bg-[#000000] text-white relative overflow-hidden">
       
       {/* Background Texture - Subtle Grid */}
       <div 

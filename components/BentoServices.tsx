@@ -85,7 +85,7 @@ const BentoServices: React.FC = () => {
   ];
 
   return (
-    <section id={SectionId.SERVICES} className="pt-24 pb-40 px-6 bg-white snap-start">
+    <section id={SectionId.SERVICES} className="pt-24 pb-40 px-6 bg-white">
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-24">
           <h2 className="text-6xl md:text-8xl font-semibold text-zinc-900 tracking-tighter mb-8">

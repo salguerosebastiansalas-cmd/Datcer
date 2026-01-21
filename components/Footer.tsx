@@ -32,7 +32,7 @@ const FooterLogo = () => (
 
 const Footer: React.FC = () => {
   return (
-    <footer id={SectionId.CONTACT} className="bg-white pt-20 pb-10 border-t border-gray-200 text-zinc-600 text-sm snap-start">
+    <footer id={SectionId.CONTACT} className="bg-white pt-20 pb-10 border-t border-gray-200 text-zinc-600 text-sm">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           

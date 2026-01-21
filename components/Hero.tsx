@@ -8,7 +8,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
   return (
-    <section id={SectionId.HERO} className="min-h-screen flex flex-col items-center justify-center pt-20 pb-20 px-6 overflow-hidden relative bg-[#f5f5f7] snap-start">
+    <section id={SectionId.HERO} className="min-h-screen flex flex-col items-center justify-center pt-20 pb-20 px-6 overflow-hidden relative bg-[#f5f5f7]">
       
       {/* 
         DATA CENTER ATMOSPHERE LAYER 

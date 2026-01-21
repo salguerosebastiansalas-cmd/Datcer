@@ -22,7 +22,7 @@ const LoadBanksSection: React.FC = () => {
   };
 
   return (
-    <section id={SectionId.LOAD_BANKS} className="py-32 px-6 bg-[#121212] text-white snap-start relative overflow-hidden">
+    <section id={SectionId.LOAD_BANKS} className="py-32 px-6 bg-[#121212] text-white relative overflow-hidden">
       
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F26722] opacity-[0.08] blur-[150px] rounded-full pointer-events-none"></div>

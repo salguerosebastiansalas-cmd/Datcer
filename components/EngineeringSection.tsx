@@ -57,7 +57,7 @@ const EngineeringSection: React.FC = () => {
   ];
 
   return (
-    <section id={SectionId.ENGINEERING} className="pt-24 pb-32 px-6 bg-[#f5f5f7] snap-start">
+    <section id={SectionId.ENGINEERING} className="pt-24 pb-32 px-6 bg-[#f5f5f7]">
       <div className="max-w-[1400px] mx-auto">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
