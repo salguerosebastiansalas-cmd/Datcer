@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datcer | Data Center & Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Importing Inter for body text */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      
+      /* Importing Encode Sans for Logo (matches Swis721 Ex BT style) */
+      @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wdth,wght@125,800;125,900&display=swap');
+
+      /* Importing Outfit for Uptime Institute style typography */
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&display=swap');
+      
+      html {
+        /* Mandatory: Forces the scroll to snap to a snap point. Feels "faster" and more precise. */
+        scroll-snap-type: y mandatory; 
+        /* Smooth scrolling for anchor links */
+        scroll-behavior: smooth;
+        /* Adjusted padding so the snap point leaves room for the navbar */
+        scroll-padding-top: 90px; 
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fbfbfd; /* Apple-like off-white */
+        color: #1d1d1f; /* Apple-like dark gray */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      /* Custom Animations */
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+      }
+      
+      /* Data Stream Animations for Hero */
+      @keyframes data-stream {
+        0% {
+          transform: translateY(-100%) scaleY(0.5);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(150vh) scaleY(1.5);
+          opacity: 0;
+        }
+      }
+      .animate-data-stream {
+        animation: data-stream linear infinite;
+      }
+
+      .glass-nav {
+        background-color: rgba(251, 251, 253, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
