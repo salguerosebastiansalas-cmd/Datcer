@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://datcer.com/sitemap.xml
