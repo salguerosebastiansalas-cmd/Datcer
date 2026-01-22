@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Shield, Wind, Server, ClipboardCheck, Leaf, BarChart3, Globe, Zap, Network, Layers } from 'lucide-react';
+import { Cpu, Shield, Wind, Server, ClipboardCheck, Leaf, BarChart3, Globe, Zap, Network, Layers, Gauge, FileCheck, Activity, Wrench } from 'lucide-react';
 import { SectionId } from '../types';
 import DetailModal from './DetailModal';
 
@@ -78,10 +78,55 @@ const BentoServices: React.FC = () => {
   ];
 
   const secondaryServices = [
-    { title: "Capacity Planning", icon: BarChart3, details: ["Proyección de crecimiento IT", "Análisis de carga eléctrica"], msg: "Info sobre Capacity Planning" },
-    { title: "Virtualización", icon: Server, details: ["Consolidación de servidores", "Nubes privadas e híbridas"], msg: "Info sobre Virtualización" },
-    { title: "Cableado Estructurado", icon: Network, details: ["Fibra óptica OM4/OM5", "Certificación de puntos de red"], msg: "Info sobre Cableado Estructurado" },
-    { title: "Detección de Incendios", icon: Zap, details: ["Sistemas VESDA", "Agentes limpios no corrosivos"], msg: "Info sobre Detección de Incendios" }
+    { 
+        title: "Capacity Planning", 
+        icon: BarChart3, 
+        details: ["Proyección de crecimiento IT", "Análisis de carga eléctrica", "Simulación de escenarios futuros"], 
+        msg: "Info sobre Capacity Planning" 
+    },
+    { 
+        title: "Virtualización", 
+        icon: Server, 
+        details: ["Consolidación de servidores", "Nubes privadas e híbridas", "Hyper-V / VMware"], 
+        msg: "Info sobre Virtualización" 
+    },
+    { 
+        title: "Cableado Estructurado", 
+        icon: Network, 
+        details: ["Fibra óptica OM4/OM5/OS2", "Certificación Fluke", "Ordenamiento de Racks"], 
+        msg: "Info sobre Cableado Estructurado" 
+    },
+    { 
+        title: "Detección de Incendios", 
+        icon: Shield, 
+        details: ["Sistemas VESDA (Aspiración)", "Agentes limpios (Novec/FM200)", "Supresión automática"], 
+        msg: "Info sobre Detección de Incendios" 
+    },
+    // Nuevos Servicios Agregados
+    { 
+        title: "Análisis PUE & Eficiencia", 
+        icon: Gauge, 
+        details: ["Cálculo ISO 50001", "Optimización energética", "Reducción de OPEX"], 
+        msg: "Me interesa un análisis de PUE y Eficiencia Energética." 
+    },
+    { 
+        title: "Commissioning (Cx)", 
+        icon: FileCheck, 
+        details: ["Niveles 1 al 5", "Pruebas IST (Integrated System Test)", "Validación FAT/SAT"], 
+        msg: "Requiero servicios de Commissioning para mi Data Center." 
+    },
+    { 
+        title: "Monitoreo DCIM", 
+        icon: Activity, 
+        details: ["Gestión de activos en tiempo real", "Mapas térmicos", "Alertas preventivas"], 
+        msg: "Quiero implementar una solución DCIM." 
+    },
+    { 
+        title: "Mantenimiento Crítico", 
+        icon: Wrench, 
+        details: ["Soporte 24/7", "Mantenimiento preventivo UPS/AA", "Limpieza técnica"], 
+        msg: "Necesito un plan de mantenimiento para mi infraestructura." 
+    }
   ];
 
   return (
@@ -126,7 +171,7 @@ const BentoServices: React.FC = () => {
                 ))}
             </div>
 
-            {/* Small Features Row */}
+            {/* Small Features Row - Grid 4x2 */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                  {secondaryServices.map((item, i) => (
                      <div 
@@ -135,15 +180,15 @@ const BentoServices: React.FC = () => {
                             title: item.title,
                             subtitle: "Servicio Especializado",
                             description: "Soluciones complementarias para la integridad total de su infraestructura tecnológica.",
-                            deepDescription: `Nuestro servicio de ${item.title} cumple con los más altos estándares de calidad para asegurar la operatividad continua.`,
+                            deepDescription: `Nuestro servicio de ${item.title} cumple con los más altos estándares de calidad para asegurar la operatividad continua. Nos enfocamos en la optimización y la resiliencia.`,
                             details: item.details,
-                            icon: <item.icon className="w-8 h-8 text-[#636466]" />,
+                            icon: <item.icon className="w-8 h-8 text-[#F26722]" />,
                             msg: item.msg
                         })}
-                        className="bg-white border border-zinc-200 rounded-2xl p-6 flex items-center gap-4 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer active:scale-[0.98]"
+                        className="bg-white border border-zinc-200 rounded-2xl p-6 flex items-center gap-4 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer active:scale-[0.98] group"
                     >
-                        <item.icon className="w-5 h-5 text-[#636466]" />
-                        <span className="font-semibold text-zinc-700 text-sm">{item.title}</span>
+                        <item.icon className="w-5 h-5 text-[#636466] group-hover:text-[#F26722] transition-colors" />
+                        <span className="font-semibold text-zinc-700 text-sm group-hover:text-zinc-900 transition-colors">{item.title}</span>
                      </div>
                  ))}
             </div>
