@@ -11,14 +11,29 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
     <section id={SectionId.HERO} className="min-h-screen flex flex-col items-center justify-center pt-20 pb-20 px-6 overflow-hidden relative bg-[#f5f5f7]">
       
       {/* 
+        BACKGROUND IMAGE LAYER (New)
+        Subtle, grayscale, industrial texture behind everything
+      */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none">
+        <img 
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=2000&q=80" 
+            alt="Data Center Infrastructure" 
+            className="w-full h-full object-cover opacity-[0.15] grayscale mix-blend-multiply"
+        />
+        {/* Gradient Mask to fade image into background color for perfect text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#f5f5f7] via-[#f5f5f7]/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f5f5f7]/90 via-transparent to-[#f5f5f7]/90"></div>
+      </div>
+
+      {/* 
         DATA CENTER ATMOSPHERE LAYER 
         Concept: "Living Structure" - Grid lines representing racks + Data flowing
       */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-0">
           
           {/* 1. Technical Grid Background (The "Floor Plan") */}
           <div 
-            className="absolute inset-0 opacity-[0.03]" 
+            className="absolute inset-0 opacity-[0.05]" 
             style={{ 
                 backgroundImage: 'linear-gradient(#636466 1px, transparent 1px), linear-gradient(90deg, #636466 1px, transparent 1px)', 
                 backgroundSize: '40px 40px',
@@ -54,14 +69,14 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
           <span className="text-xs font-bold text-[#636466] tracking-wide uppercase">Sistemas Activos</span>
         </div>
         
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter text-[#1d1d1f] leading-[0.95] mb-6">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter text-[#1d1d1f] leading-[0.95] mb-6 drop-shadow-sm">
           Datcer. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#636466] via-[#4a4a4a] to-[#F26722]">
             Ingeniería Pura.
           </span>
         </h1>
 
-        <p className="text-xl md:text-3xl text-[#636466] max-w-3xl mx-auto font-medium leading-normal tracking-tight">
+        <p className="text-xl md:text-3xl text-[#636466] max-w-3xl mx-auto font-medium leading-normal tracking-tight drop-shadow-sm">
           Diseño de Data Centers de clase mundial. <br className="hidden md:block"/>
           Infraestructura crítica pensada para el futuro.
         </p>
@@ -78,7 +93,7 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
             href="https://datcer-brochure.vercel.app/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-white text-[#1d1d1f] border border-[#d2d2d7] px-8 py-4 rounded-full text-lg font-bold hover:bg-[#f5f5f7] hover:border-[#F26722]/30 transition-all hover:scale-[1.02] active:scale-95 shadow-sm flex items-center gap-3"
+            className="bg-white/80 backdrop-blur-sm text-[#1d1d1f] border border-[#d2d2d7] px-8 py-4 rounded-full text-lg font-bold hover:bg-[#f5f5f7] hover:border-[#F26722]/30 transition-all hover:scale-[1.02] active:scale-95 shadow-sm flex items-center gap-3"
           >
             <FileText className="w-5 h-5 text-[#F26722]" />
             Ver Brochure
