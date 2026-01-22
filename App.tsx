@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import AboutSection from './components/AboutSection';
 import BentoServices from './components/BentoServices';
 import EngineeringSection from './components/EngineeringSection';
 import LoadBanksSection from './components/LoadBanksSection';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
       
       <main>
         <Hero scrollToSection={scrollToSection} />
+        <AboutSection />
         <BentoServices />
         <EngineeringSection />
         <LoadBanksSection />
