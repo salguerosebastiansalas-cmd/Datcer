@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Shield, Wind, Server, ClipboardCheck, Leaf, BarChart3, Globe, Zap, Network, Layers, Gauge, FileCheck, Activity, Wrench } from 'lucide-react';
+import { Cpu, Shield, Wind, Server, ClipboardCheck, Leaf, BarChart3, Globe, Zap, Network, Layers, Gauge, FileCheck, Activity, Wrench, CircuitBoard, BoxSelect, FileSpreadsheet, Thermometer, Spline, PencilRuler, Truck, Waves } from 'lucide-react';
 import { SectionId } from '../types';
 import DetailModal from './DetailModal';
 
@@ -77,55 +77,107 @@ const BentoServices: React.FC = () => {
     }
   ];
 
+  // Combined Services List
   const secondaryServices = [
+    // --- Servicios de Operación y Gestión ---
     { 
         title: "Capacity Planning", 
         icon: BarChart3, 
-        details: ["Proyección de crecimiento IT", "Análisis de carga eléctrica", "Simulación de escenarios futuros"], 
-        msg: "Info sobre Capacity Planning" 
+        details: ["Proyección de crecimiento IT", "Análisis de carga eléctrica futura", "Optimización de espacio en rack", "Planificación de expansión modular"], 
+        msg: "Me interesa el servicio de Capacity Planning." 
     },
     { 
         title: "Virtualización", 
         icon: Server, 
-        details: ["Consolidación de servidores", "Nubes privadas e híbridas", "Hyper-V / VMware"], 
-        msg: "Info sobre Virtualización" 
+        details: ["Consolidación de servidores", "Alta disponibilidad (HA)", "Migración P2V", "Optimización de recursos"], 
+        msg: "Quiero información sobre Virtualización de servidores." 
     },
-    { 
-        title: "Cableado Estructurado", 
-        icon: Network, 
-        details: ["Fibra óptica OM4/OM5/OS2", "Certificación Fluke", "Ordenamiento de Racks"], 
-        msg: "Info sobre Cableado Estructurado" 
-    },
-    { 
-        title: "Detección de Incendios", 
-        icon: Shield, 
-        details: ["Sistemas VESDA (Aspiración)", "Agentes limpios (Novec/FM200)", "Supresión automática"], 
-        msg: "Info sobre Detección de Incendios" 
-    },
-    // Nuevos Servicios Agregados
     { 
         title: "Análisis PUE & Eficiencia", 
         icon: Gauge, 
-        details: ["Cálculo ISO 50001", "Optimización energética", "Reducción de OPEX"], 
-        msg: "Me interesa un análisis de PUE y Eficiencia Energética." 
+        details: ["Medición de Power Usage Effectiveness", "Detección de ineficiencias energéticas", "Estrategias de ahorro", "Benchmarking"], 
+        msg: "Necesito un análisis de PUE y eficiencia energética." 
     },
     { 
         title: "Commissioning (Cx)", 
         icon: FileCheck, 
-        details: ["Niveles 1 al 5", "Pruebas IST (Integrated System Test)", "Validación FAT/SAT"], 
-        msg: "Requiero servicios de Commissioning para mi Data Center." 
+        details: ["Pruebas de aceptación en sitio (SAT)", "Validación de redundancia", "Protocolos de arranque", "Certificación de operación"], 
+        msg: "Requiero servicios de Commissioning (Cx) para mi Data Center." 
     },
     { 
         title: "Monitoreo DCIM", 
         icon: Activity, 
-        details: ["Gestión de activos en tiempo real", "Mapas térmicos", "Alertas preventivas"], 
-        msg: "Quiero implementar una solución DCIM." 
+        details: ["Implementación de software DCIM", "Monitoreo ambiental en tiempo real", "Gestión de activos", "Alertas preventivas"], 
+        msg: "Información sobre soluciones de Monitoreo DCIM." 
     },
     { 
         title: "Mantenimiento Crítico", 
         icon: Wrench, 
-        details: ["Soporte 24/7", "Mantenimiento preventivo UPS/AA", "Limpieza técnica"], 
-        msg: "Necesito un plan de mantenimiento para mi infraestructura." 
+        details: ["Mantenimiento preventivo y correctivo", "Atención de emergencias 24/7", "Limpieza técnica especializada", "Gestión de garantías"], 
+        msg: "Quiero cotizar un plan de Mantenimiento Crítico." 
+    },
+
+    // --- Servicios de Ingeniería de Diseño ---
+    { 
+        title: "Diagramas Unifilares", 
+        icon: CircuitBoard, 
+        details: ["Diseño eléctrico detallado", "Cuadros de cargas y balanceo", "Coordinación de protecciones", "Especificación de UPS/Generadores"], 
+        msg: "Requiero diseño de Diagramas Unifilares y Cuadros de Carga." 
+    },
+    { 
+        title: "Planometría & Layout", 
+        icon: BoxSelect, 
+        details: ["Distribución de planta", "Cortes arquitectónicos", "Ubicación de racks y pasillos", "Rutas de evacuación"], 
+        msg: "Necesito apoyo con la Planometría y Layout de mi Data Center." 
+    },
+    { 
+        title: "Memorias de Cálculo", 
+        icon: FileSpreadsheet, 
+        details: ["Cálculo de conductores y canaletas", "Caída de tensión", "Selección de transformadores", "Justificación técnica normativa"], 
+        msg: "Necesito las Memorias de Cálculo para mi proyecto." 
+    },
+    { 
+        title: "Cálculo Térmico", 
+        icon: Thermometer, 
+        details: ["Estimación de carga térmica (BTU/h)", "Selección de equipos HVAC", "Flujo de aire (CFM)", "Control de humedad"], 
+        msg: "Info sobre Cálculo Térmico y selección de aires." 
+    },
+    { 
+        title: "Modelado BIM / Revit", 
+        icon: Spline, 
+        details: ["Modelado 3D de instalaciones", "Detección de interferencias (Clash)", "Recorridos virtuales", "Planos AS-BUILT"], 
+        msg: "Me interesa el servicio de Modelado BIM y Revit MEP." 
+    },
+    { 
+        title: "Sistemas de Tierras", 
+        icon: PencilRuler, 
+        details: ["Diseño de malla de tierra", "Equipotencialidad en racks", "Protección contra rayos", "Medición de resistividad"], 
+        msg: "Requiero diseño de Sistemas de Puesta a Tierra." 
+    },
+    { 
+        title: "Cableado Estructurado", 
+        icon: Network, 
+        details: ["Diseño de rutas de fibra/cobre", "Cálculo de escalerillas", "Topología Spine-Leaf", "Diagramas de conexión"], 
+        msg: "Info sobre diseño de Cableado Estructurado." 
+    },
+    { 
+        title: "Detección Incendios", 
+        icon: Shield, 
+        details: ["Matriz de causa-efecto", "Isométricos de tubería", "Cálculo de agente limpio", "Ubicación de sensores"], 
+        msg: "Info sobre diseño de Detección y Extinción de Incendios." 
+    },
+    // --- Servicios Adicionales (Nuevos) ---
+    {
+        title: "Calidad de Energía",
+        icon: Waves,
+        details: ["Análisis de armónicos (THD)", "Corrección de factor de potencia", "Estudios de transientes", "Cumplimiento IEEE 519"],
+        msg: "Requiero un estudio de Calidad de Energía para mi red."
+    },
+    {
+        title: "Migración de Data Center",
+        icon: Truck,
+        details: ["Planificación logística detallada", "Movimiento de activos críticos", "Seguros de carga especializada", "Desmontaje y montaje certificado"],
+        msg: "Necesito cotizar una Migración de Data Center."
     }
   ];
 
@@ -171,7 +223,7 @@ const BentoServices: React.FC = () => {
                 ))}
             </div>
 
-            {/* Small Features Row - Grid 4x2 */}
+            {/* Small Features Row - Grid 4x4 for full coverage */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                  {secondaryServices.map((item, i) => (
                      <div 
@@ -179,16 +231,16 @@ const BentoServices: React.FC = () => {
                         onClick={() => openModal({
                             title: item.title,
                             subtitle: "Servicio Especializado",
-                            description: "Soluciones complementarias para la integridad total de su infraestructura tecnológica.",
-                            deepDescription: `Nuestro servicio de ${item.title} cumple con los más altos estándares de calidad para asegurar la operatividad continua. Nos enfocamos en la optimización y la resiliencia.`,
+                            description: "Soluciones técnicas de alta precisión para la infraestructura y operación de Data Centers.",
+                            deepDescription: `Nuestro servicio de ${item.title} está diseñado para cumplir con los más altos estándares de disponibilidad y eficiencia operativa.`,
                             details: item.details,
                             icon: <item.icon className="w-8 h-8 text-[#F26722]" />,
                             msg: item.msg
                         })}
-                        className="bg-white border border-zinc-200 rounded-2xl p-6 flex items-center gap-4 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer active:scale-[0.98] group"
+                        className="bg-white border border-zinc-200 rounded-xl p-4 flex items-center gap-3 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer active:scale-[0.98] group"
                     >
-                        <item.icon className="w-5 h-5 text-[#636466] group-hover:text-[#F26722] transition-colors" />
-                        <span className="font-semibold text-zinc-700 text-sm group-hover:text-zinc-900 transition-colors">{item.title}</span>
+                        <item.icon className="w-5 h-5 text-[#636466] group-hover:text-[#F26722] transition-colors shrink-0" />
+                        <span className="font-semibold text-zinc-700 text-sm group-hover:text-zinc-900 transition-colors leading-tight">{item.title}</span>
                      </div>
                  ))}
             </div>
