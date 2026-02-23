@@ -9,7 +9,6 @@ import CertificationSection from './components/CertificationSection';
 import DatcerAI from './components/DatcerAI';
 import Footer from './components/Footer';
 import { SectionId } from './types';
-import { LanguageProvider } from './contexts/LanguageContext';
 
 const App: React.FC = () => {
   const scrollToSection = (id: SectionId) => {
@@ -20,23 +19,21 @@ const App: React.FC = () => {
   };
 
   return (
-    <LanguageProvider>
-      <div className="w-full min-h-screen relative bg-[#fbfbfd]">
-        <Navbar scrollToSection={scrollToSection} />
-        
-        <main>
-          <Hero scrollToSection={scrollToSection} />
-          <AboutSection />
-          <BentoServices />
-          <EngineeringSection />
-          <LoadBanksSection />
-          <CertificationSection />
-          <DatcerAI />
-        </main>
+    <div className="w-full min-h-screen relative bg-[#fbfbfd]">
+      <Navbar scrollToSection={scrollToSection} />
+      
+      <main>
+        <Hero scrollToSection={scrollToSection} />
+        <AboutSection />
+        <BentoServices />
+        <EngineeringSection />
+        <LoadBanksSection />
+        <CertificationSection />
+        <DatcerAI />
+      </main>
 
-        <Footer />
-      </div>
-    </LanguageProvider>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { Users, Briefcase, Target, Eye, ChevronRight } from 'lucide-react';
 import DetailModal from './DetailModal';
-import { useTranslation } from '../contexts/LanguageContext';
 
 const AboutSection: React.FC = () => {
-  const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
   const items = [
     {
-      title: t('about_who'),
+      title: "Quiénes Somos",
       subtitle: "Identidad Corporativa",
       icon: Users,
-      shortText: t('about_who_desc'),
+      shortText: "Ingeniería de precisión para la economía digital.",
       description: "Datcer es una firma de ingeniería especializada en infraestructura de misión crítica. Nos dedicamos a diseñar, auditar y materializar los centros de datos que impulsan el mundo actual. No somos solo consultores; somos arquitectos de la continuidad operativa.",
       details: [
         "Especialistas certificados TIA-942.",
@@ -22,10 +20,10 @@ const AboutSection: React.FC = () => {
       whatsappMessage: "Hola, me gustaría conocer más sobre la trayectoria de Datcer."
     },
     {
-      title: t('about_what'),
+      title: "Qué Hacemos",
       subtitle: "Nuestro Core",
       icon: Briefcase,
-      shortText: t('about_what_desc'),
+      shortText: "Soluciones integrales de infraestructura crítica.",
       description: "Transformamos necesidades complejas en infraestructura resiliente. Abarcamos todo el ciclo de vida del Data Center: desde la consultoría estratégica y el diseño conceptual, hasta la ingeniería de detalle, construcción y certificación internacional.",
       details: [
         "Diseño y Construcción (Design-Build).",
@@ -35,10 +33,10 @@ const AboutSection: React.FC = () => {
       whatsappMessage: "Hola, quiero saber más sobre los servicios que ofrece Datcer."
     },
     {
-      title: t('about_mission'),
+      title: "Misión",
       subtitle: "Nuestro Propósito",
       icon: Target,
-      shortText: t('about_mission_desc'),
+      shortText: "Garantizar la continuidad operativa absoluta.",
       description: "Nuestra misión es proveer soluciones de ingeniería que blinden la operación de nuestros clientes. Nos comprometemos a entregar infraestructura que no solo cumpla con los estándares, sino que optimice la inversión (CAPEX) y reduzca los costos operativos (OPEX) a largo plazo.",
       details: [
         "Excelencia técnica innegociable.",
@@ -48,10 +46,10 @@ const AboutSection: React.FC = () => {
       whatsappMessage: "Hola, me interesa saber cómo Datcer garantiza la continuidad operativa."
     },
     {
-      title: t('about_vision'),
+      title: "Visión",
       subtitle: "Hacia el Futuro",
       icon: Eye,
-      shortText: t('about_vision_desc'),
+      shortText: "Ser el referente en ingeniería de Data Centers.",
       description: "Aspiramos a ser la firma de referencia en Latinoamérica para el diseño de infraestructura digital. Buscamos liderar la transición hacia Data Centers más sostenibles, densos y automatizados, estableciendo nuevos estándares de calidad en la región.",
       details: [
         "Liderazgo en sostenibilidad (Green IT).",
