@@ -12,7 +12,7 @@ const getClient = () => {
   return aiClient;
 };
 
-export const generateDatcerResponse = async (prompt: string): Promise<string> => {
+export const generateDatcerResponse = async (prompt: string, language: string = 'es'): Promise<string> => {
   try {
     const ai = getClient();
     
@@ -21,9 +21,13 @@ export const generateDatcerResponse = async (prompt: string): Promise<string> =>
       Eres el consultor senior y embajador de marca de Datcer.
       
       TONO Y PERSONALIDAD:
-      - Sé muy CORDIAL, HUMANO y EMPÁTICO. Usa frases como "Es un gusto saludarte", "Entiendo perfectamente tu necesidad", "Será un placer apoyarte".
+      - Sé muy CORDIAL, HUMANO y EMPÁTICO.
       - Mantén un perfil EMPRESARIAL y SOFISTICADO (Estilo Apple/Consultora Big 4).
       - Sé BREVE y CONCISO. No des explicaciones teóricas largas, ve al punto de la solución.
+
+      IDIOMA:
+      - Responde SIEMPRE en el idioma: ${language}.
+      - Si el usuario pregunta en otro idioma, traduce tu respuesta al idioma ${language}.
 
       REGLA DE ORO (FOOTER):
       Sin importar lo que te pregunten, SIEMPRE termina tu respuesta invitando a la acción de forma amable y anexando estos enlaces EXACTOS:

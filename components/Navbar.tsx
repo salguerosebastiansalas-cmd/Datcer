@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown } from 'lucide-react';
 import { SectionId } from '../types';
+import { useTranslation, Language } from '../contexts/LanguageContext';
 
 /**
  * Componente de Logo Corporativo Datcer OFICIAL
- * - Diseño puramente tipográfico (Solo letras)
- * - Colores exactos: Naranja #F26522, Gris #636466
  */
 export const DatcerLogo = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center select-none ${className}`}>
@@ -39,6 +38,8 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const { language, setLanguage, t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,11 +50,21 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Consultoría', id: SectionId.SERVICES },
-    { label: 'Ingeniería', id: SectionId.ENGINEERING },
-    { label: 'Bancos de Carga', id: SectionId.LOAD_BANKS },
-    { label: 'Datcer AI', id: SectionId.AI },
-    { label: 'Contacto', id: SectionId.CONTACT },
+    { label: t('nav_consultancy'), id: SectionId.SERVICES },
+    { label: t('nav_engineering'), id: SectionId.ENGINEERING },
+    { label: t('nav_load_banks'), id: SectionId.LOAD_BANKS },
+    { label: t('nav_ai'), id: SectionId.AI },
+    { label: t('nav_contact'), id: SectionId.CONTACT },
+  ];
+
+  const languages: { code: Language; label: string }[] = [
+    { code: 'es', label: 'Español' },
+    { code: 'en', label: 'English' },
+    { code: 'de', label: 'Deutsch' },
+    { code: 'fr', label: 'Français' },
+    { code: 'pt', label: 'Português' },
+    { code: 'it', label: 'Italiano' },
+    { code: 'zh', label: '中文' },
   ];
 
   return (
@@ -78,16 +89,56 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
               {link.label}
             </button>
           ))}
+          
+          {/* Language Selector */}
+          <div className="relative">
+            <button 
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-1 text-xs font-bold text-[#636466] hover:text-[#F26522] transition-colors tracking-widest uppercase"
+            >
+              <Globe size={14} />
+              <span>{language}</span>
+              <ChevronDown size={12} className={`transition-transform ${langOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {langOpen && (
+              <div className="absolute top-full right-0 mt-2 bg-white border border-gray-100 shadow-xl rounded-xl py-2 min-w-[120px] animate-fade-in-up">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setLanguage(lang.code);
+                      setLangOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-2 text-xs font-medium hover:bg-gray-50 transition-colors ${language === lang.code ? 'text-[#F26522]' : 'text-[#636466]'}`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button 
             onClick={() => scrollToSection(SectionId.CONTACT)}
             className="bg-[#636466] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-[#F26522] transition-all active:scale-95 shadow-md ml-2"
           >
-            Cotizar
+            {t('nav_quote')}
           </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <button 
+            onClick={() => {
+              const nextIndex = (languages.findIndex(l => l.code === language) + 1) % languages.length;
+              setLanguage(languages[nextIndex].code);
+            }}
+            className="text-[#636466] p-2 flex items-center gap-1"
+          >
+            <Globe size={20} />
+            <span className="text-xs font-bold uppercase">{language}</span>
+          </button>
           <button onClick={() => setIsOpen(!isOpen)} className="text-[#636466] p-2">
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -116,7 +167,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
             }}
             className="bg-[#F26522] text-white py-4 rounded-2xl font-bold uppercase text-center"
           >
-            Iniciar Proyecto
+            {t('nav_quote')}
           </button>
         </div>
       )}

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Cpu, Shield, Wind, Server, ClipboardCheck, Leaf, BarChart3, Globe, Zap, Network, Layers, Gauge, FileCheck, Activity, Wrench, CircuitBoard, BoxSelect, FileSpreadsheet, Thermometer, Spline, PencilRuler, Truck, Waves } from 'lucide-react';
 import { SectionId } from '../types';
 import DetailModal from './DetailModal';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const BentoServices: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
 
   const openModal = (item: any) => setSelectedItem(item);
@@ -189,7 +191,7 @@ const BentoServices: React.FC = () => {
             Expertise.
           </h2>
           <p className="text-3xl md:text-4xl text-[#636466] max-w-4xl font-semibold tracking-tight leading-tight">
-            Dos pilares fundamentales. <span className="text-[#F26722]">Un ecosistema de continuidad total.</span>
+            {t('services_title')}
           </p>
         </div>
 
@@ -197,7 +199,7 @@ const BentoServices: React.FC = () => {
         <div className="mb-40">
             <div className="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-6">
                 <span className="text-sm font-bold bg-[#636466] text-white px-3 py-1 rounded-full uppercase tracking-wider">01</span>
-                <h3 className="text-4xl font-semibold text-zinc-900 tracking-tight">Diseño de Data Centers</h3>
+                <h3 className="text-4xl font-semibold text-zinc-900 tracking-tight">{t('engineering_title')}</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -250,7 +252,7 @@ const BentoServices: React.FC = () => {
         <div>
             <div className="flex items-baseline gap-4 mb-10 border-b border-zinc-200 pb-6">
                 <span className="text-sm font-bold bg-[#636466] text-white px-3 py-1 rounded-full uppercase tracking-wider">02</span>
-                <h3 className="text-4xl font-semibold text-zinc-900 tracking-tight">Consultoría Estratégica</h3>
+                <h3 className="text-4xl font-semibold text-zinc-900 tracking-tight">{t('nav_consultancy')}</h3>
             </div>
 
             <div className="bg-[#1d1d1f] rounded-[2.5rem] p-10 md:p-20 text-white overflow-hidden relative shadow-2xl">

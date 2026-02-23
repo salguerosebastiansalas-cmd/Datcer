@@ -2,14 +2,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Loader2, Bot, ArrowUp } from 'lucide-react';
 import { SectionId, ChatMessage } from '../types';
 import { generateDatcerResponse } from '../services/geminiService';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const DatcerAI: React.FC = () => {
+  const { t, language } = useTranslation();
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: 'Hola, es un gusto saludarte. Soy el asistente de ingeniería de Datcer. ¿En qué puedo apoyarte hoy con tu proyecto de Data Center?' }
+    { role: 'model', text: t('ai_welcome') }
   ]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Update welcome message when language changes
+  useEffect(() => {
+    setMessages([{ role: 'model', text: t('ai_welcome') }]);
+  }, [language]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -25,7 +32,7 @@ const DatcerAI: React.FC = () => {
     setQuery('');
     setLoading(true);
 
-    const responseText = await generateDatcerResponse(query);
+    const responseText = await generateDatcerResponse(query, language);
     
     setMessages(prev => [...prev, { role: 'model', text: responseText }]);
     setLoading(false);
@@ -81,11 +88,10 @@ const DatcerAI: React.FC = () => {
             <span className="text-xs font-semibold text-zinc-200 uppercase tracking-widest">Datcer Intelligence</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-zinc-200 to-zinc-500 pb-4">
-            Consultoría <br />
-            al instante.
+            {t('ai_subtitle')}
           </h2>
           <p className="text-xl text-zinc-400 mt-6 font-medium leading-relaxed max-w-md mx-auto md:mx-0">
-            Resuelve dudas sobre normativas, enfriamiento o solicita una cotización con nuestra IA entrenada.
+            {t('ai_desc')}
           </p>
         </div>
 
@@ -117,7 +123,7 @@ const DatcerAI: React.FC = () => {
                     <div className="flex justify-start animate-pulse">
                         <div className="bg-zinc-800/80 px-6 py-4 rounded-3xl flex gap-3 items-center border border-white/5">
                         <Loader2 className="w-4 h-4 animate-spin text-[#F26722]" />
-                        <span className="text-zinc-400 text-sm">Escribiendo...</span>
+                        <span className="text-zinc-400 text-sm">{t('ai_writing')}</span>
                         </div>
                     </div>
                     )}
@@ -131,7 +137,7 @@ const DatcerAI: React.FC = () => {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyDown={handleKeyPress}
-                        placeholder="Pregunta a Datcer..."
+                        placeholder={t('ai_placeholder')}
                         className="flex-1 bg-transparent border-none outline-none text-white placeholder-zinc-500 h-10 px-4 font-medium"
                     />
                     <button 
